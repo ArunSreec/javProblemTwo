@@ -28,7 +28,7 @@ public class Details {
 			XSSFWorkbook workbook = new XSSFWorkbook(excelFilePath);
 			XSSFSheet sheet = workbook.getSheet("Sheet1");
 
-			FileWriter file = new FileWriter("X:\\Eclipse\\ecsAccessmentJava\\src\\main\\resources\\JsonFile.json");
+			FileWriter file = new FileWriter(".\\src\\main\\resources\\JsonFile.json");
 
 			
 			int columcount = sheet.getRow(2).getPhysicalNumberOfCells();
