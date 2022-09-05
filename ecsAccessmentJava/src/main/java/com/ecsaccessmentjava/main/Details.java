@@ -68,7 +68,10 @@ public class Details {
 					statement.execute(sql);
 
 					Gson json = new Gson();
+					
 					String jsonobject = json.toJson(studentOne);
+					
+					
 					System.out.println(jsonobject);
 
 					file.write(jsonobject);

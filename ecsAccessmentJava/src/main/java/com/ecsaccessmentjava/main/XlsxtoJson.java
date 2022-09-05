@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class XlsxtoJson {
 
-	public void main(String[] args) throws IOException, SQLException{
+	public static void main(String[] args) throws IOException, SQLException{
 	
 		Details newDet = new Details();
 		newDet.allDetails();
