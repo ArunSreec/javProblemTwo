@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.ecsaccessmentjava.model.Student;
 import com.google.gson.Gson;
 
 public class Details {
@@ -30,7 +31,6 @@ public class Details {
 
 			FileWriter file = new FileWriter(".\\src\\main\\resources\\JsonFile.json");
 
-			
 			int columcount = sheet.getRow(2).getPhysicalNumberOfCells();
 			System.out.println("Connecting to database..............." + jdbcURL);
 			con = DriverManager.getConnection(jdbcURL, username, password);
@@ -41,10 +41,10 @@ public class Details {
 				XSSFRow row = sheet.getRow(i);
 				if (row != null) {
 					int addmisionNumber = (int) sheet.getRow(i).getCell(0).getNumericCellValue();
-					String name =  sheet.getRow(i).getCell(1).toString();
-					double physicsMarks =  sheet.getRow(i).getCell(2).getNumericCellValue();
-					double chemistryMarks =  sheet.getRow(i).getCell(3).getNumericCellValue();
-					double mathsMarks =  sheet.getRow(i).getCell(4).getNumericCellValue();
+					String name = sheet.getRow(i).getCell(1).toString();
+					double physicsMarks = sheet.getRow(i).getCell(2).getNumericCellValue();
+					double chemistryMarks = sheet.getRow(i).getCell(3).getNumericCellValue();
+					double mathsMarks = sheet.getRow(i).getCell(4).getNumericCellValue();
 					Student studentOne = new Student();
 					studentOne.setAddmissionNumber(addmisionNumber);
 					studentOne.setName(name);
@@ -68,13 +68,11 @@ public class Details {
 					statement.execute(sql);
 
 					Gson json = new Gson();
-					
-					String jsonobject = json.toJson(studentOne);
-					
-					
-					System.out.println(jsonobject);
 
-					file.write(jsonobject);
+					String jsonstr = json.toJson(studentOne);
+					System.out.println(jsonstr);
+
+					file.write(jsonstr);
 
 				}
 			}
